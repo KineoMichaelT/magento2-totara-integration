@@ -1,5 +1,5 @@
 {
-    "name": "kineomichaelt/magento2-totara-integration",
+    "name": "kineo/magento2-totara-integration",
     "description": "Integration with Totara",
     "type": "magento2-module",
     "version": "0.1.0",
