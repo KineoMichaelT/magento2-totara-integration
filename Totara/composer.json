@@ -1,17 +1,25 @@
 {
-    "name": "kineo/totara",
+    "name": "kineo/magento2-totara-integration",
     "description": "Integration with Totara",
     "type": "magento2-module",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Michael J. Trio",
+            "email": "Michael.Trio@kineo.com"
+        }
     ],
     "require": {
         "php": "~7.0.0"
     },
     "autoload": {
-        "files": [ "registration.php" ],
+        "files": [ 
+            "registration.php" 
+        ],
         "psr-4": {
             "Kineo\\Totara\\": ""
         }

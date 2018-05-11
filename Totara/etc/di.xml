@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <preference for="Kineo\Totara\Api\CustomerSessionInterface" type="Kineo\Totara\Model\Customer\Session" />
   <preference for="Magento\Customer\Block\Account\Dashboard" type="Kineo\Totara\Block\Account\Dashboard" />
   <preference for="Magento\Checkout\Block\Cart" type="Kineo\Totara\Block\Cart" />
   <preference for="Magento\Checkout\Block\Cart\Item\Renderer" type="Kineo\Totara\Block\Cart\Item\Renderer" />
