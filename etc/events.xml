@@ -9,4 +9,10 @@
     <event name="sales_order_save_after">
         <observer name="kineo_totara_afterordersave" instance="Kineo\Totara\Observer\AfterOrderSave" />
     </event>
+    <event name="checkout_cart_update_items_after">
+        <observer name="kineo_totara_afteritemsupdate" instance="Kineo\Totara\Observer\AfterCartItemUpdate" />
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="kineo_totara_afteritemdelete" instance="Kineo\Totara\Observer\AfterCartItemDelete" />
+    </event>
 </config>

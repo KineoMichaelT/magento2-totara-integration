@@ -12,27 +12,25 @@ namespace Kineo\Totara\Observer;
 
 class AfterOrderSave implements \Magento\Framework\Event\ObserverInterface
 {
-
-    /** @var \Magento\Customer\Model\Session $_customerSession */
-    protected $_customerSession;
+    /** @var \GuzzleHttp\Client */
+    private $_client;
 
     /** @var \Magento\Framework\App\Config\ScopeConfigInterface */
-    protected $_scopeConfig;
+    private $_scopeConfig;
 
 
-    public function __construct(\Magento\Sales\Api\Data\OrderInterface $order, \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig) {
-
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $this->_customerSession = $objectManager->create('Magento\Customer\Model\Session');
+    public function __construct(\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig, \GuzzleHttp\Client $guzzleClient)
+    {
+        $this->_client = $guzzleClient;
+        $this->_order =
         $this->_scopeConfig = $scopeConfig;
     }
 
-    public function execute(\Magento\Framework\Event\Observer $observer) {
-        $eventdata = $observer->getData();
-        $wwwroot = $this->_scopeConfig->getValue('totara_config/url/root');
-
+    public function execute(\Magento\Framework\Event\Observer $observer)
+    {
         /* @var $order \Magento\Sales\Model\Order */
-        $order = ($eventdata['order']);
+        $order = $observer->getOrder();
+        $wwwroot = $this->_scopeConfig->getValue('totara_config/url/root');
 
         $order->getItems();
         $order->getPayment()->getData();

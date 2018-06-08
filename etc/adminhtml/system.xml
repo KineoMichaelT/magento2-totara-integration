@@ -10,9 +10,15 @@
             <resource>Totara_Kineo::config</resource>
             <group id="url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Site Urls</label>
-                <field id="root" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="root" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Totara Root Url</label>
                 </field>
+            </group>
+            <group id="webservice" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Webservice</label>
+                <field id="token" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Token</label>
+                </field>>
             </group>
         </section>
     </system>

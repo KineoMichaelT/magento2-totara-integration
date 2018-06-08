@@ -1,16 +1,12 @@
 <?php
 /**
- * @copyright 2017 Kineo
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  * @author Michael J. Trio <michael.trio@kineo.com>
- * @package Kineo
- * @subpackage Totara
+ * @copyright 2018 Kineo
  */
 
 namespace Kineo\Totara\Observer;
 
-class AfterCartUpdate implements \Magento\Framework\Event\ObserverInterface
+class AfterCartItemUpdate implements \Magento\Framework\Event\ObserverInterface
 {
 
     /** @var \Magento\Checkout\Model\Cart $_order */
@@ -32,10 +28,12 @@ class AfterCartUpdate implements \Magento\Framework\Event\ObserverInterface
         $this->_scopeConfig = $scopeConfig;
     }
 
-    public function execute(\Magento\Framework\Event\Observer $observer) {
-        /*
+    public function execute(\Magento\Framework\Event\Observer $observer)
+    {
         $wwwroot = $this->_scopeConfig->getValue('totara_config/url/root');
         $token = $this->_scopeConfig->getValue('totara_config/webservice/token');
+
+        // TODO: Try out getData
 
         // Modify and build custom response because I can't figure out how to convert quote to standard WebAPI response.
         $payload = $this->_cart->getQuote()->toArray();
@@ -44,8 +42,6 @@ class AfterCartUpdate implements \Magento\Framework\Event\ObserverInterface
         }
         $payload['customer'] = $this->_cart->getQuote()->getCustomer()->__toArray();
         $payload['id'] = $payload['entity_id'];
-
-        var_dump($payload['items']);
 
         $response = $this->_client->post($wwwroot . '/webservice/rest/server.php', [
             \GuzzleHttp\RequestOptions::FORM_PARAMS => [
@@ -56,9 +52,10 @@ class AfterCartUpdate implements \Magento\Framework\Event\ObserverInterface
             ],
         ]);
 
-        echo $response->getBody()->getContents();
-        die();
-         */
+        $json = json_decode($response->getBody()->getContents());
+        if (isset($json->exception)) {
+            throw new \Exception($json->message);
+        }
     }
 
 }
