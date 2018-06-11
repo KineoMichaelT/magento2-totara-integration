@@ -10,7 +10,7 @@
                         </resource>
                     </resource>
                 </resource>
-                <resource id="Kineo_Totara::login" title="Log in customer from active token" />
+                <resource id="Kineo_Totara::token" title="Issue customer token for customerId" />
             </resource>
         </resources>
     </acl>

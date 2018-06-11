@@ -41,10 +41,9 @@ class AfterCartItemDelete implements \Magento\Framework\Event\ObserverInterface
 
         $json = json_decode($response->getBody()->getContents());
         if (isset($json->exception)) {
-            var_dump($json);
-            die();
             throw new \Exception($json->message);
         }
+
     }
 
 }
