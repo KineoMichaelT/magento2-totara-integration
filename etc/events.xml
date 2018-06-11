@@ -1,18 +1,15 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="checkout_onepage_controller_success_action">
-        <observer name="checkout_controller_success_action" instance="Kineo\Totara\Observer\AfterOrder" />
-    </event>
-    <event name="checkout_cart_save_after">
-        <observer name="kineo_totara_aftercartupdate" instance="Kineo\Totara\Observer\AfterCartUpdate" />
-    </event>
-    <event name="sales_order_save_after">
-        <observer name="kineo_totara_afterordersave" instance="Kineo\Totara\Observer\AfterOrderSave" />
+        <observer name="checkout_controller_success_action" instance="Kineo\Totara\Observer\CheckoutSuccess" />
     </event>
     <event name="checkout_cart_update_items_after">
         <observer name="kineo_totara_afteritemsupdate" instance="Kineo\Totara\Observer\AfterCartItemUpdate" />
     </event>
+    <event name="sales_order_invoice_register">
+        <observer name="kineo_totara_invoice_register" instance="Kineo\Totara\Observer\InvoiceRegister" />
+    </event>
     <event name="sales_quote_remove_item">
-        <observer name="kineo_totara_afteritemdelete" instance="Kineo\Totara\Observer\AfterCartItemDelete" />
+        <observer name="kineo_totara_remove_item" instance="Kineo\Totara\Observer\RemoveItem" />
     </event>
 </config>

@@ -10,7 +10,7 @@
 
 namespace Kineo\Totara\Observer;
 
-class AfterOrder implements \Magento\Framework\Event\ObserverInterface
+class CheckoutSuccess implements \Magento\Framework\Event\ObserverInterface
 {
 
     /** @var \Magento\Customer\Model\Session $_customerSession */

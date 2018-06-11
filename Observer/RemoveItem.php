@@ -6,7 +6,7 @@
 
 namespace Kineo\Totara\Observer;
 
-class AfterCartItemDelete implements \Magento\Framework\Event\ObserverInterface
+class RemoveItem implements \Magento\Framework\Event\ObserverInterface
 {
     /** @var \GuzzleHttp\Client $_client */
     protected $_client;
