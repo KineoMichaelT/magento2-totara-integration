@@ -44,6 +44,13 @@ class RemoveItem implements \Magento\Framework\Event\ObserverInterface
             throw new \Exception($json->message);
         }
 
+        switch ($json->statusCode) {
+            case 404:
+                throw new \Exception('Error 404: Resource not found.');
+            case 500:
+                throw new \Exception('Error 500: Internal server error.');
+        }
+
     }
 
 }
